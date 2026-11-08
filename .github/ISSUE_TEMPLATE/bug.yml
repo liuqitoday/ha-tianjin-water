@@ -1,0 +1,39 @@
+name: Bug report / 问题反馈
+description: Report a reproducible issue using only sanitized information.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先阅读 README 与故障排查。不要上传 HAR、SESSION、Cookie、户号、表号、私人截图或 HA 配置/备份。
+        For vulnerabilities, use the private security report instead of an issue.
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home Assistant Core version
+    validations:
+      required: true
+  - type: input
+    id: integration_version
+    attributes:
+      label: Integration version
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps and expected behavior
+      description: Describe what you did and what happened, without account information.
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: Static error code and official website status
+      description: Include only a safe reason code and whether the official page can still query your account. Do not paste raw logs or responses.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy review
+      options:
+        - label: I have removed all credentials, account/meter identifiers and household information.
+          required: true

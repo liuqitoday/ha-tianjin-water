@@ -1,0 +1,94 @@
+{
+  "title": "天津自来水",
+  "config": {
+    "step": {
+      "user": {
+        "title": "天津自来水",
+        "description": "填入本人水务账户成功查询使用的 SESSION。可以粘贴整个 Cookie 请求头。户号必须仍绑定在该微信账户下。定时查询不保证延长会话有效期。",
+        "data": {
+          "custom_id": "缴费户号",
+          "session": "SESSION 或 Cookie",
+          "user_agent": "User-Agent（可选）"
+        }
+      },
+      "reauth_confirm": {
+        "title": "天津自来水",
+        "description": "采集已暂停。请提供同一户号的新 SESSION；已确认失效的旧 SESSION 不会再次请求。",
+        "data": {
+          "session": "SESSION 或 Cookie",
+          "user_agent": "User-Agent（可选）"
+        }
+      },
+      "reconfigure": {
+        "title": "天津自来水",
+        "description": "填入当前可用的 SESSION，验证成功后恢复采集。户号保持不变。若是账户解绑或服务端异常，请先恢复网页正常查询。",
+        "data": {
+          "session": "SESSION 或 Cookie",
+          "user_agent": "User-Agent（可选）"
+        }
+      }
+    },
+    "error": {
+      "invalid_account": "户号应为数字。",
+      "invalid_session": "SESSION 格式无效。请复制成功查询请求中的 Cookie。",
+      "invalid_user_agent": "User-Agent 包含无效字符或过长。",
+      "invalid_auth": "认证被拒绝，请重新登录并提取新的 SESSION。",
+      "cannot_connect": "暂时无法连接水务服务，请稍后再试。",
+      "unexpected_response": "水务接口返回异常，无法确认认证是否失效。请检查该户号是否仍绑定在原微信账户下，并确认网页可以查询。",
+      "same_expired_session": "该 SESSION 已被确认失效，请提供新的 SESSION。"
+    },
+    "abort": {
+      "already_configured": "此户号已配置。",
+      "reauth_successful": "认证信息已更新，采集已恢复。",
+      "reconfigure_successful": "配置已更新，采集已恢复。"
+    }
+  },
+  "entity": {
+    "sensor": {
+      "balance": {
+        "name": "预缴余额"
+      },
+      "due": {
+        "name": "本次应缴金额"
+      },
+      "index": {
+        "name": "最近抄表指数"
+      },
+      "consumption": {
+        "name": "本期用水量"
+      },
+      "charge": {
+        "name": "本期水费"
+      },
+      "date": {
+        "name": "最近抄表日期"
+      },
+      "collection_status": {
+        "name": "采集状态",
+        "state": {
+          "running": "正常采集",
+          "retrying": "连接异常，等待下次查询",
+          "authentication_required": "需要重新认证",
+          "stopped": "已停止"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "invalid_auth": {
+      "message": "认证被拒绝，请重新登录并提取新的 SESSION。"
+    },
+    "cannot_connect": {
+      "message": "暂时无法连接水务服务，请稍后再试。"
+    },
+    "polling_stopped": {
+      "message": "采集已停止。请查看诊断信息，并通过「重新配置」恢复。"
+    }
+  },
+  "issues": {
+    "polling_stopped": {
+      "title": "天津水务采集已停止",
+      "description": "原因：{reason}。请先确认原微信账户仍绑定该户号，且网页能正常查询，再进入集成的「重新配置」填写可用 SESSION。重启系统不会自动恢复请求。"
+    }
+  }
+}

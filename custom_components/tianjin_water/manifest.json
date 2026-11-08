@@ -1,0 +1,14 @@
+{
+  "domain": "tianjin_water",
+  "name": "Tianjin Water 天津自来水",
+  "codeowners": [
+    "@liuqitoday"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/liuqitoday/ha-tianjin-water",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/liuqitoday/ha-tianjin-water/issues",
+  "requirements": [],
+  "version": "0.3.0"
+}

@@ -1,0 +1,94 @@
+{
+  "title": "Tianjin Water",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tianjin Water",
+        "description": "Use the SESSION from a successful query for your own water account. A full Cookie header is accepted. The account must remain linked to that WeChat user. Polling does not guarantee session renewal.",
+        "data": {
+          "custom_id": "Billing account number",
+          "session": "SESSION or Cookie",
+          "user_agent": "User-Agent (optional)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Tianjin Water",
+        "description": "Polling is paused. Provide a new SESSION for the same billing account. A known expired SESSION will not be retried.",
+        "data": {
+          "session": "SESSION or Cookie",
+          "user_agent": "User-Agent (optional)"
+        }
+      },
+      "reconfigure": {
+        "title": "Tianjin Water",
+        "description": "Provide a working SESSION. Successful validation resumes polling for the same account. Resolve any account unlinking or server problem first.",
+        "data": {
+          "session": "SESSION or Cookie",
+          "user_agent": "User-Agent (optional)"
+        }
+      }
+    },
+    "error": {
+      "invalid_account": "The billing account must contain only digits.",
+      "invalid_session": "Invalid SESSION format. Copy the Cookie from a successful query.",
+      "invalid_user_agent": "The User-Agent is too long or contains invalid characters.",
+      "invalid_auth": "Authentication was rejected. Sign in again and obtain a new SESSION.",
+      "cannot_connect": "Cannot connect to the water service. Try again later.",
+      "unexpected_response": "The service returned an unexpected response. Expiry is unconfirmed. Check the account remains linked to the original WeChat user and the website works.",
+      "same_expired_session": "This SESSION was already rejected. Provide a new SESSION."
+    },
+    "abort": {
+      "already_configured": "This billing account is already configured.",
+      "reauth_successful": "Credentials updated. Polling resumed.",
+      "reconfigure_successful": "Configuration updated. Polling resumed."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "balance": {
+        "name": "Prepaid balance"
+      },
+      "due": {
+        "name": "Amount due"
+      },
+      "index": {
+        "name": "Latest meter reading"
+      },
+      "consumption": {
+        "name": "Billing period consumption"
+      },
+      "charge": {
+        "name": "Billing period charge"
+      },
+      "date": {
+        "name": "Last reading date"
+      },
+      "collection_status": {
+        "name": "Collection status",
+        "state": {
+          "running": "Running",
+          "retrying": "Connection failed, waiting for next poll",
+          "authentication_required": "Authentication required",
+          "stopped": "Stopped"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "invalid_auth": {
+      "message": "Authentication was rejected. Sign in again and obtain a new SESSION."
+    },
+    "cannot_connect": {
+      "message": "Cannot connect to the water service. Try again later."
+    },
+    "polling_stopped": {
+      "message": "Polling is stopped. Review diagnostics and use Reconfigure to resume."
+    }
+  },
+  "issues": {
+    "polling_stopped": {
+      "title": "Tianjin Water polling stopped",
+      "description": "Reason: {reason}. Verify the billing account is still linked to the original WeChat user and the website works. Then use Reconfigure with a working SESSION. Restarting does not resume polling."
+    }
+  }
+}
