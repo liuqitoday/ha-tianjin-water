@@ -1,6 +1,9 @@
 {
   "domain": "tianjin_water",
   "name": "Tianjin Water 天津自来水",
+  "categories": [
+    "water.meters_leak_detection"
+  ],
   "codeowners": [
     "@liuqitoday"
   ],
